@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<configuration debug="false" scan="false">
+
+	<springProperty scope="context" name="parentName" source="spring.parentApplication.name" defaultValue="unknownParent"/>
+	<springProperty scope="context" name="springAppName" source="spring.application.name" defaultValue="unknownName"/>
+	<springProperty scope="context" name="logsHost" source="logs.gelf.host" defaultValue=""/>
+	<springProperty scope="context" name="logsPort" source="logs.gelf.port" defaultValue=""/>
+
+	<property name="LOGS" value="./logs" />
+	<property name="LOG_PATTERN" value="%d %X{X-B3-TraceId:-} %X{X-B3-SpanId:-} %X{X-AWS-instanceId} %X{X-AWS-name} %X{X-AWS-environment} ${parentName} ${springAppName}
+		%-5level [%logger{50}] %thread{10} - %msg%n" />
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGS}/spring-boot-logger.log</file>
+		<encoder
+		    class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+		    <Pattern>${LOG_PATTERN}</Pattern>
+		</encoder>
+	 
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOGS}/archived/spring-boot-logger-%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+	</appender>
+		
+    <appender name="GELF" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
+           <host>${logsHost}</host>
+           <port>${logsPort}</port>
+           <version>1.1</version>
+           <extractStackTrace>true</extractStackTrace>
+           <filterStackTrace>true</filterStackTrace>
+           <timestampPattern>yyyy-MM-dd HH:mm:ss,SSSS</timestampPattern>
+           <mdcFields>X-B3-TraceId,X-B3-SpanId,X-AWS-instanceId,X-AWS-name,X-AWS-environment</mdcFields>
+           <mdcProfiling>true</mdcProfiling>
+           <additionalFields>MicroService=${springAppName},Parent=${parentName}</additionalFields>
+    </appender>
+
+    <springProfile name="default">
+		<root level="WARN">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="GELF" />
+		</root>
+	
+		<logger name="com.aprades" level="ALL" />
+    </springProfile>
+
+    <springProfile name="test">
+		<root level="WARN">
+			<appender-ref ref="STDOUT" />
+		</root>
+    </springProfile>
+
+    <springProfile name="local">
+		<root level="WARN">
+			<appender-ref ref="STDOUT" />
+		</root>
+		<logger name="com.aprades" level="ALL" />
+    </springProfile>
+</configuration>

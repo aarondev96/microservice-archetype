@@ -1,0 +1,3 @@
+Copyright (c) ${license.git.copyrightYears} Aarón Prades Arraya
+
+Author: ${email}

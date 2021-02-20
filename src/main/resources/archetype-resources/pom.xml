@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<name>${projectPrettyName}</name>
+	<artifactId>${artifactId}</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<version>${version}</version>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>com.aprades</groupId>
+		<artifactId>microservices-parent</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<properties>
+		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
+		<currentYear>${maven.build.timestamp}</currentYear>
+		<main.basedir>${project.basedir}</main.basedir>
+		<license-maven-plugin.version>3.0</license-maven-plugin.version>
+	</properties>
+
+	<inceptionYear>${currentYear}</inceptionYear>
+
+	<modules>
+		<module>${artifactId}-core</module>
+		<module>${artifactId}-boot</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>${license-maven-plugin.version}</version>
+				<configuration>
+					<header>${main.basedir}/src/license/copyright.txt</header>
+					<quiet>false</quiet>
+					<failIfMissing>true</failIfMissing>
+					<aggregate>false</aggregate>
+					<includes>
+						<include>src/**</include>
+						<include>**/test/**</include>
+					</includes>
+					<excludes>
+						<exclude>target/**</exclude>
+					</excludes>
+					<useDefaultExcludes>true</useDefaultExcludes>
+					<mapping>
+						<jwc>XML_STYLE</jwc>
+						<application>XML_STYLE</application>
+						<myFileExtension>JAVADOC_STYLE</myFileExtension>
+					</mapping>
+					<useDefaultMapping>true</useDefaultMapping>
+					<properties>
+						<year>${project.inceptionYear}</year>
+						<email>aprades96@gmail.com</email>
+					</properties>
+					<encoding>UTF-8</encoding>
+					<skipExistingHeaders>true</skipExistingHeaders>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin-git</artifactId>
+						<version>${license-maven-plugin.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>format</goal>
+						</goals>
+						<phase>process-sources</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
