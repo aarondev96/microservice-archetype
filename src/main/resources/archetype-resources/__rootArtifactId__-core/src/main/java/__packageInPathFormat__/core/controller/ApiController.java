@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ${package}.core.dto.ApiResponse;
@@ -25,7 +25,7 @@ public class ApiController {
 	public ApiResponse isApiUp(@RequestParam final String name) {
 		LOGGER.info(">> isApiUp() name {}", name);
 
-		ApiResponse response = service.hello(name);
+		ApiResponse response = service.isApiUp(name);
 
 		LOGGER.info("<< isApiUp() response {}", response);
 		return response;
