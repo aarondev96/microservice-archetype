@@ -26,15 +26,9 @@
 			<fileSets>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/java/__packageInPathFormat__</directory>
-					<includes>
-						<include>**/*.java</include>
-					</includes>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/test/java/__packageInPathFormat__</directory>
-					<includes>
-						<include>**/*.java</include>
-					</includes>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/resources</directory>
@@ -73,13 +67,18 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/resources</directory>
 					<includes>
-						<include>**/*</include>
+						<include>**/*.xml</include>
+						<include>**/*.properties</include>
+						<include>**/*.sql</include>
+						<include>**/*.pem</include>
 					</includes>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/test/resources</directory>
 					<includes>
-						<include>**/*</include>
+						<include>**/*.xml</include>
+						<include>**/*.properties</include>
+						<include>**/*.sql</include>
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
