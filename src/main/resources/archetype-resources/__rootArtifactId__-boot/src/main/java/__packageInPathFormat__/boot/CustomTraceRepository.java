@@ -29,9 +29,8 @@ public class CustomTraceRepository implements HttpTraceRepository {
 	public void add(HttpTrace trace) {
 		Map<String, List<String>> headers = new HashMap<>(trace.getRequest().getHeaders());
 		headers.remove("authorization");
-		LOGGER.info("\n Time: {} \n Principal: {} \n Request: {}:{} \n Request Headers: {} \n status: {}",
+		LOGGER.info("\n Time: {} \n Request: {}:{} \n Request Headers: {} \n status: {}",
 				trace.getTimestamp().atZone(ZoneId.of("Europe/Madrid")),
-				trace.getPrincipal().getName(),
 				trace.getRequest().getMethod(),
 				trace.getRequest().getUri(),
 				headers,

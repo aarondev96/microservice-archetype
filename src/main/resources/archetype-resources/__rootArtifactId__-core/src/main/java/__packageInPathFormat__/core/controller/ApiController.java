@@ -21,13 +21,13 @@ public class ApiController {
 		this.service = service;
 	}
 
-	@GetMapping(value = {"/hello", "/hello/{name}"}, produces = MediaType.TEXT_PLAIN_VALUE)
-	public ApiResponse helloRest(@PathVariable final String name) {
-		LOGGER.info(">> helloRest() name {}", name);
+	@GetMapping(value = {"/hello"}, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ApiResponse isApiUp(@RequestParam final String name) {
+		LOGGER.info(">> isApiUp() name {}", name);
 
 		ApiResponse response = service.hello(name);
 
-		LOGGER.info("<< helloRest() response {}", response);
+		LOGGER.info("<< isApiUp() response {}", response);
 		return response;
 	}
 }
