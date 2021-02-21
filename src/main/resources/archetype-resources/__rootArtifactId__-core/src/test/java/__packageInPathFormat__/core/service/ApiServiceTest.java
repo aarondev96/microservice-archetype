@@ -33,14 +33,14 @@ public class ApiServiceTest {
 	@Test
 	public void whenHelloEmpty() {
 		String name = "";
-		String greeting = apiService.hello(java.util.Optional.of(name));
-		Assert.assertEquals("Hello World!", greeting);
+		String greeting = apiService.hello(name).getWelcomeMsg();
+		Assert.assertEquals("Hello World", greeting);
 	}
 
 	@Test
 	public void whenHelloName() {
 		String name = "test";
-		String greeting = apiService.hello(java.util.Optional.of(name));
+		String greeting = apiService.hello(name).getWelcomeMsg();
 		Assert.assertEquals("Hello test!", greeting);
 	}
 

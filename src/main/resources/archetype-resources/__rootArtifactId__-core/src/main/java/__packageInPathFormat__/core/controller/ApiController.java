@@ -18,7 +18,7 @@ public class ApiController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApiController.class);
 
-	private ApiService service;
+	private final ApiService service;
 
 	public ApiController(ApiService service) {
 		this.service = service;

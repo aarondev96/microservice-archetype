@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<name>${projectPrettyName} Boot</name>
-	<artifactId>${artifactId}</artifactId>
+	<name>Pretty Name Boot</name>
+	<artifactId>test-boot</artifactId>
 	<parent>
-		<groupId>${groupId}</groupId>
-		<artifactId>${rootArtifactId}</artifactId>
-		<version>${version}</version>
+		<groupId>com.aprades</groupId>
+		<artifactId>test</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<packaging>jar</packaging>
 
@@ -16,6 +16,7 @@
 		<main.basedir>${project.parent.basedir}</main.basedir>
 		<javax.activation.version>1.2.0</javax.activation.version>
 		<jaxb.version>2.3.1</jaxb.version>
+		<com-sun.version>3.0.0</com-sun.version>
 		<swagger.version>3.0.0</swagger.version>
 		<logstash.version>1.14.1</logstash.version>
 	</properties>
@@ -23,8 +24,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.aprades</groupId>
-			<artifactId>${rootArtifactId}-core</artifactId>
-			<version>${version}</version>
+			<artifactId>test-core</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -51,12 +52,12 @@
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-core</artifactId>
-			<version>${jaxb.version}</version>
+			<version>${com-sun.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
-			<version>${jaxb.version}</version>
+			<version>${com-sun.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -65,9 +66,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.4.2</version>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
 				<configuration>
 					<release>11</release>
 					<verbose>true</verbose>
@@ -77,6 +81,7 @@
 			<plugin>
 				<groupId>pl.project13.maven</groupId>
 				<artifactId>git-commit-id-plugin</artifactId>
+				<version>4.0.3</version>
 				<configuration>
 					<failOnNoGitDirectory>false</failOnNoGitDirectory>
 				</configuration>

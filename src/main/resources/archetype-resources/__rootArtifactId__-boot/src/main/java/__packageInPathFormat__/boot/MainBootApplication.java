@@ -18,7 +18,7 @@ public class MainBootApplication {
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(MainBootApplication.class, args);
 		AppInfoBean appInfo = context.getBean(AppInfoBean.class);
-		LOGGER.info("### Started application {} on port {} ###", appInfo.getName(), appInfo.getPort());
+		LOGGER.info("!!! Started application {} on port {} !!!", appInfo.getName(), appInfo.getPort());
 	}
 
 	@Bean

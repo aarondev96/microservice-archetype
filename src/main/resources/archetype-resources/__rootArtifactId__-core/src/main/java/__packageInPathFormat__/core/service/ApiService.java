@@ -13,14 +13,14 @@ public class ApiService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApiService.class);
 
-	public String hello(final String name) {
+	public ApiResponse hello(final String name) {
 		LOGGER.debug(">> hello() name {}", name);
 
 		ApiResponse response = new ApiResponse();
 		response.setWelcomeMsg(name != null && !name.isBlank() ? "Hello " + name + "!" : "Hello World");
 
-		LOGGER.debug("<< hello() hello {}", hello);
-		return hello;
+		LOGGER.debug("<< hello() welcome message {}", response.getWelcomeMsg());
+		return response;
 	}
 
 }
