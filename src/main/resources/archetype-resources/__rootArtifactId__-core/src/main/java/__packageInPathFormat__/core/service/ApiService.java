@@ -11,11 +11,10 @@ public class ApiService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApiService.class);
 
-	public ApiResponse isApiUp(final String name) {
-		LOGGER.debug(">> isApiUp() name {}", name);
+	public ApiResponse isApiUp() {
+		LOGGER.debug(">> isApiUp()");
 
-		ApiResponse response = new ApiResponse();
-		response.setWelcomeMsg(name != null && !name.isBlank() ? "Hello " + name + "!" : "Hello World");
+		ApiResponse response = new ApiResponse("Hello World");
 
 		LOGGER.debug("<< isApiUp() welcome message {}", response.getWelcomeMsg());
 		return response;

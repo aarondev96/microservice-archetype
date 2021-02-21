@@ -22,10 +22,10 @@ public class ApiController {
 	}
 
 	@GetMapping(value = {"/hello"}, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ApiResponse isApiUp(@RequestParam final String name) {
-		LOGGER.info(">> isApiUp() name {}", name);
+	public ApiResponse isApiUp() {
+		LOGGER.info(">> isApiUp()");
 
-		ApiResponse response = service.isApiUp(name);
+		ApiResponse response = service.isApiUp();
 
 		LOGGER.info("<< isApiUp() response {}", response);
 		return response;

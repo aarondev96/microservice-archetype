@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ApiServiceTest {
 
 	@TestConfiguration
@@ -32,16 +32,8 @@ public class ApiServiceTest {
 
 	@Test
 	public void whenHelloEmpty() {
-		String name = "";
-		String greeting = apiService.hello(name).getWelcomeMsg();
+		String greeting = apiService.isApiUp().getWelcomeMsg();
 		Assert.assertEquals("Hello World", greeting);
-	}
-
-	@Test
-	public void whenHelloName() {
-		String name = "test";
-		String greeting = apiService.hello(name).getWelcomeMsg();
-		Assert.assertEquals("Hello test!", greeting);
 	}
 
 }
