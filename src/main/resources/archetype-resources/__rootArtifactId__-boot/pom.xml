@@ -34,7 +34,7 @@
 		<dependency>
 			<groupId>biz.paluch.logging</groupId>
 			<artifactId>logstash-gelf</artifactId>
-			<version>{logstash.version}</version>
+			<version>${logstash.version}</version>
 		</dependency>
 
 		<!-- Javax & Jaxb -->
