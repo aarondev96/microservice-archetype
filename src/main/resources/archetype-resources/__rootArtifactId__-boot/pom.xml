@@ -15,7 +15,9 @@
 	<properties>
 		<main.basedir>${project.parent.basedir}</main.basedir>
 		<javax.activation.version>1.2.0</javax.activation.version>
-		<jaxb.version>2.3.0</jaxb.version>
+		<jaxb.version>2.3.1</jaxb.version>
+		<swagger.version>3.0.0</swagger.version>
+		<logstash.version>1.14.1</logstash.version>
 	</properties>
 
 	<dependencies>
@@ -32,7 +34,7 @@
 		<dependency>
 			<groupId>biz.paluch.logging</groupId>
 			<artifactId>logstash-gelf</artifactId>
-			<version>1.13.0</version>
+			<version>{logstash.version}</version>
 		</dependency>
 
 		<!-- Javax & Jaxb -->
@@ -44,6 +46,7 @@
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>

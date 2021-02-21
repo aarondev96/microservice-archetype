@@ -1,5 +1,6 @@
-package ${package}.core.controller;
+package ${package}.core.dto;
 
+@Data
 public class ApiResponse {
 
 	private String welcomeMsg;
