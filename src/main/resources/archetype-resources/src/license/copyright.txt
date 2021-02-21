@@ -1,3 +1,3 @@
-Copyright (c) ${license.git.copyrightYears} Aarón Prades Arraya
+Copyright (c) ${year} Aarón Prades Arraya
 
 Author: ${email}
