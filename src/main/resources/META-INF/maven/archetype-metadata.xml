@@ -6,6 +6,9 @@
 		<requiredProperty key="projectPrettyName" />
 		<requiredProperty key="parentApplication" />
 		<requiredProperty key="repositoryName" />
+		<requiredProperty key="gitignore">
+			<defaultValue>.gitignore</defaultValue>
+		</requiredProperty>
 	</requiredProperties>
 	<fileSets>
 		<fileSet filtered="true" encoding="UTF-8">
@@ -17,7 +20,7 @@
 		<fileSet encoding="UTF-8">
 			<directory></directory>
 			<includes>
-				<include>.gitignore</include>
+				<include>__gitignore__</include>
 			</includes>
 		</fileSet>
 	</fileSets>
@@ -45,7 +48,7 @@
 				<fileSet encoding="UTF-8">
 					<directory></directory>
 					<includes>
-						<include>.gitignore</include>
+						<include>__gitignore__</include>
 					</includes>
 				</fileSet>
 			</fileSets>
@@ -55,36 +58,31 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/java/__packageInPathFormat__</directory>
 					<includes>
-						<include>**/*.java</include>
+						<include>**/*</include>
 					</includes>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/test/java/__packageInPathFormat__</directory>
 					<includes>
-						<include>**/*.java</include>
+						<include>**/*</include>
 					</includes>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/resources</directory>
 					<includes>
-						<include>**/*.xml</include>
-						<include>**/*.properties</include>
-						<include>**/*.sql</include>
-						<include>**/*.pem</include>
+						<include>**/*</include>
 					</includes>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/test/resources</directory>
 					<includes>
-						<include>**/*.xml</include>
-						<include>**/*.properties</include>
-						<include>**/*.sql</include>
+						<include>**/*</include>
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
 					<directory></directory>
 					<includes>
-						<include>.gitignore</include>
+						<include>__gitignore__</include>
 					</includes>
 				</fileSet>
 			</fileSets>
