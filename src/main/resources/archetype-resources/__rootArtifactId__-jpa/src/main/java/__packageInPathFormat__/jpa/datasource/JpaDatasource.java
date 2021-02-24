@@ -37,10 +37,10 @@ class JpaDatasource {
 	@Value("${dollar}{datasource.url:jdbc:mysql://localhost:3306/money_saver?useSSL=false}")
 	private String url;
 
-	@Value("${dollar}{datasource.username:aprades}")
+	@Value("${dollar}{datasource.username:root}")
 	private String username;
 
-	@Value("${dollar}{datasource.password:py0KdNz2+}")
+	@Value("${dollar}{datasource.password:root}")
 	private String password;
 
 	@Value("${dollar}{hibernate.dialect:org.hibernate.dialect.MySQL5InnoDBDialect}")
