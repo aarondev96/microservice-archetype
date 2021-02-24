@@ -15,4 +15,12 @@
 		<main.basedir>${project.parent.basedir}</main.basedir>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.aprades</groupId>
+			<artifactId>test-jpa</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	<dependencies>
+
 </project>
