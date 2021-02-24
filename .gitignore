@@ -54,4 +54,5 @@ omni-plan/.idea
 /dist/
 /nbdist/
 /.nb-gradle/
-
+.gradle
+/gradle/
