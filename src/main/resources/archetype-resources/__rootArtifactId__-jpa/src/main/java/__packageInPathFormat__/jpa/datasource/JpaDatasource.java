@@ -6,8 +6,10 @@ package ${package}.jpa.datasource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -29,7 +31,7 @@ import java.util.Properties;
 )
 class JpaDatasource {
 
-	@Value("${dollar}{spring.datasource.driver-class-name:com.mysql.jdbc.Driver}")
+	@Value("${dollar}{spring.datasource.driver-class-name:com.mysql.cj.jdbc.Driver}")
 	private String driver;
 
 	@Value("${dollar}{datasource.url:jdbc:mysql://localhost:3306/money_saver?useSSL=false}")
