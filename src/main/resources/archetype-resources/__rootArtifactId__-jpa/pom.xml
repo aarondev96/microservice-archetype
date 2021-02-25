@@ -17,6 +17,7 @@
 		<spring.version>2.4.3</spring.version>
 		<mysql-connector.version>8.0.23</mysql-connector.version>
 		<hsqldb.version>2.5.1</hsqldb.version>
+		<postgres.version>42.2.19</postgres.version>
 	</properties>
 
 	<dependencies>
@@ -26,15 +27,15 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgres.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>${hsqldb.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql-connector.version}</version>
 		</dependency>
 	</dependencies>
 
