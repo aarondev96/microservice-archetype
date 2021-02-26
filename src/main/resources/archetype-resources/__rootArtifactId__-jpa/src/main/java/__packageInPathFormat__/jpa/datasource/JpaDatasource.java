@@ -31,31 +31,31 @@ import java.util.Properties;
 )
 class JpaDatasource {
 
-	@Value("${spring.datasource.driver-class-name:com.mysql.cj.jdbc.Driver}")
+	@Value("${dollar}{spring.datasource.driver-class-name:com.mysql.cj.jdbc.Driver}")
 	private String driver;
 
-	@Value("${spring.datasource.url}")
+	@Value("${dollar}{spring.datasource.url}")
 	private String url;
 
-	@Value("${spring.datasource.username}")
+	@Value("${dollar}{spring.datasource.username}")
 	private String username;
 
-	@Value("${spring.datasource.password}")
+	@Value("${dollar}{spring.datasource.password}")
 	private String password;
 
-	@Value("${hibernate.dialect:org.hibernate.dialect.MySQL5InnoDBDialect}")
+	@Value("${dollar}{hibernate.dialect:org.hibernate.dialect.MySQL5InnoDBDialect}")
 	private String dialect;
 
-	@Value("${hibernate.show_sql:true}")
+	@Value("${dollar}{hibernate.show_sql:true}")
 	private boolean showSQL;
 
-	@Value("${hibernate.format_sql:true}")
+	@Value("${dollar}{hibernate.format_sql:true}")
 	private boolean formatSQL;
 
-	@Value("${entities:com.aprades.test.jpa.entity}")
+	@Value("${dollar}{entities:com.aprades.test.jpa.entity}")
 	private String packageScan;
 
-	@Value("${connection.release_mode:auto}")
+	@Value("${dollar}{connection.release_mode:auto}")
 	private String releaseMode;
 
 	@Bean(name = "jpaDataSource")
