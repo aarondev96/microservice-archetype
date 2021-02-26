@@ -1,10 +1,14 @@
 package ${package}.jpa.datasource;
+#set($pound='#')
+#set($dollar='$')
+#set($escape='\' )
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -26,55 +30,41 @@ import java.util.Properties;
 )
 class JpaDatasource {
 
-	@Value("${spring.datasource.driver-class-name:com.mysql.jdbc.Driver}")
+	@Value("${dollar}{spring.datasource.driver-class-name:com.mysql.cj.jdbc.Driver}")
 	private String driver;
 
-	@Value("${datasource.url:jdbc:mysql://localhost:3306/{}}")
+	@Value("${dollar}{spring.datasource.url}")
 	private String url;
 
-	@Value("${datasource.username:root}")
+	@Value("${dollar}{spring.datasource.username}")
 	private String username;
 
-	@Value("${datasource.password:root}")
+	@Value("${dollar}{spring.datasource.password}")
 	private String password;
 
-	@Value("${hibernate.dialect:org.hibernate.dialect.MySQL5InnoDBDialect}")
+	@Value("${dollar}{hibernate.dialect:org.hibernate.dialect.MySQL5InnoDBDialect}")
 	private String dialect;
 
-	@Value("${hibernate.show_sql:true}")
+	@Value("${dollar}{hibernate.show_sql:true}")
 	private boolean showSQL;
 
-	@Value("${hibernate.format_sql:true}")
+	@Value("${dollar}{hibernate.format_sql:true}")
 	private boolean formatSQL;
 
-	@Value("${entities:${package}.jpa.entity}")
+	@Value("${dollar}{entities:com.aprades.test.jpa.entity}")
 	private String packageScan;
 
-	@Value("${connection.release_mode:auto}")
+	@Value("${dollar}{connection.release_mode:auto}")
 	private String releaseMode;
 
-	@Value("${hibernate.c3p0.min_size:1}")
-	private String connPoolMinSize;
-
-	@Value("${hibernate.c3p0.max_size:10}")
-	private String connPoollMaxSize;
-
-	@Value("${hibernate.c3p0.idle_test_period:10}")
-	private String connPoolIddlePeriod;
-
 	@Bean(name = "jpaDataSource")
-	public DataSource jpaDataSource() throws PropertyVetoException {
-		DataSourceBuilder dataSourceBuilder = DatasourceBuilder.create();
-		ComboPooledDataSource dataSource = new ComboPooledDataSource();
-		dataSource.setDriverClass(driver);
-		dataSource.setJdbcUrl(url + "?useSSL=false");
-		dataSource.setUser(username);
-		dataSource.setPassword(password);
-		dataSource.setMinPoolSize(Integer.parseInt(connPoolMinSize));
-		dataSource.setMaxPoolSize(Integer.parseInt(connPoollMaxSize));
-		dataSource.setMaxIdleTime(Integer.parseInt(connPoolIddlePeriod));
-		dataSource.setTestConnectionOnCheckin(true);
-		return dataSource;
+	public DataSource jpaDataSource() {
+		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+		dataSourceBuilder.driverClassName(driver);
+		dataSourceBuilder.url(url);
+		dataSourceBuilder.username(username);
+		dataSourceBuilder.password(password);
+		return dataSourceBuilder.build();
 	}
 
 	@Bean(name = "jpaEntityManagerFactory")
@@ -85,7 +75,6 @@ class JpaDatasource {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		em.setJpaProperties(hibernateProperties());
-
 		return em;
 	}
 
@@ -96,10 +85,11 @@ class JpaDatasource {
 		return transactionManager;
 	}
 
-	@Bean(name = "jpaSessionFactory")
-	public LocalSessionFactoryBean jpaSessionFactory(@Qualifier("jpaDataSource") DataSource jpaDataSource) {
+	@Primary
+	@Bean(name = "chatDetailSessionFactory")
+	public LocalSessionFactoryBean chatDetailSessionFactory(@Qualifier("jpaDataSource") DataSource chatDetailDataSource) {
 		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-		sessionFactoryBean.setDataSource(jpaDataSource);
+		sessionFactoryBean.setDataSource(chatDetailDataSource);
 		sessionFactoryBean.setPackagesToScan(packageScan);
 		sessionFactoryBean.setHibernateProperties(hibernateProperties());
 		return sessionFactoryBean;
@@ -115,4 +105,5 @@ class JpaDatasource {
 		properties.put("connection.release_mode", releaseMode);
 		return properties;
 	}
+
 }

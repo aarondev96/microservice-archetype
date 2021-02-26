@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<name>Pretty Name Core</name>
-	<artifactId>test-core</artifactId>
 	<modelVersion>4.0.0</modelVersion>
+	<name>${projectPrettyName} Core</name>
+	<artifactId>${artifactId}</artifactId>
 	<parent>
-		<groupId>com.aprades</groupId>
-		<artifactId>test</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<groupId>${groupId}</groupId>
+		<artifactId>${rootArtifactId}</artifactId>
+		<version>${version}</version>
 	</parent>
-	<description>Core del servicio.</description>
+	<description>Core Service module</description>
 
 	<properties>
 		<main.basedir>${project.parent.basedir}</main.basedir>
@@ -17,10 +17,10 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.aprades</groupId>
-			<artifactId>test-jpa</artifactId>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}-jpa</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-	<dependencies>
+	</dependencies>
 
 </project>

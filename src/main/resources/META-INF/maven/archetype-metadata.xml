@@ -25,6 +25,34 @@
 		</fileSet>
 	</fileSets>
 	<modules>
+		<module id="${rootArtifactId}-jpa" dir="__rootArtifactId__-jpa" name="${rootArtifactId}-jpa">
+			<fileSets>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/main/java/__packageInPathFormat__</directory>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/test/java/__packageInPathFormat__</directory>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/test/resources</directory>
+					<includes>
+						<include>**/*</include>
+					</includes>
+				</fileSet>
+				<fileSet encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>__gitignore__</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
 		<module id="${rootArtifactId}-core" dir="__rootArtifactId__-core" name="${rootArtifactId}-core">
 			<fileSets>
 				<fileSet filtered="true" encoding="UTF-8">
