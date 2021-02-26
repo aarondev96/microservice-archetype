@@ -6,7 +6,7 @@
 	<artifactId>${artifactId}-core</artifactId>
 	<parent>
 		<groupId>${groupId}</groupId>
-		<artifactId>${artifactId}</artifactId>
+		<artifactId>${rootArtifactId}</artifactId>
 		<version>${version}</version>
 	</parent>
 	<description>Core Service module</description>
@@ -17,8 +17,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.aprades</groupId>
-			<artifactId>${artifactId}-jpa</artifactId>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}-jpa</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

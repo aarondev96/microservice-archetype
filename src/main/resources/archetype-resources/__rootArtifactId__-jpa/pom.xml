@@ -6,7 +6,7 @@
 	<artifactId>${artifactId}-jpa</artifactId>
 	<parent>
 		<groupId>${groupId}</groupId>
-		<artifactId>${artifactId}</artifactId>
+		<artifactId>${rootArtifactId}</artifactId>
 		<version>${version}</version>
 	</parent>
 	<description>JPA Service module</description>
