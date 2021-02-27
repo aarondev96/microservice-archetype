@@ -9,4 +9,10 @@ public class ApiMapper {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApiMapper.class);
 
+	public ApiMapper apiToApi() {
+		LOGGER.debug(">> apiToApi()");
+		LOGGER.debug("<< apiToApi()");
+		return new ApiMapper();
+	}
+
 }

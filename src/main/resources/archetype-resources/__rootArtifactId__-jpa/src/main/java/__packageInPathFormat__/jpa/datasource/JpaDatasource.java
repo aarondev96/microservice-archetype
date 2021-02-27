@@ -18,7 +18,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 @Configuration
@@ -59,12 +58,12 @@ class JpaDatasource {
 
 	@Bean(name = "jpaDataSource")
 	public DataSource jpaDataSource() {
-		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-		dataSourceBuilder.driverClassName(driver);
-		dataSourceBuilder.url(url);
-		dataSourceBuilder.username(username);
-		dataSourceBuilder.password(password);
-		return dataSourceBuilder.build();
+		return DataSourceBuilder.create()
+				.driverClassName(driver)
+				.url(url)
+				.username(username)
+				.password(password)
+				.build();
 	}
 
 	@Bean(name = "jpaEntityManagerFactory")
