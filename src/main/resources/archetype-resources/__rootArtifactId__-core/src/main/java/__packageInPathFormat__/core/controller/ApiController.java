@@ -11,7 +11,7 @@ import ${package}.core.service.ApiService;
 
 @RestController
 @Api(value = "Api controller", tags = "Api controller")
-@SwaggerDefinition(tags = {@Tag(name = "Api controller", description = "Api controller")})
+@SwaggerDefinition(tags = { @Tag(name = "Api controller", description = "Api controller") })
 public class ApiController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApiController.class);
@@ -35,4 +35,5 @@ public class ApiController {
 		LOGGER.info("<< isApiUp() response {}", response);
 		return response;
 	}
+
 }
