@@ -86,9 +86,9 @@ class JpaDatasource {
 
 	@Primary
 	@Bean(name = "jpaSessionFactory")
-	public LocalSessionFactoryBean jpaSessionFactory(@Qualifier("jpaDataSource") DataSource chatDetailDataSource) {
+	public LocalSessionFactoryBean jpaSessionFactory(@Qualifier("jpaDataSource") DataSource jpaDataSource) {
 		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-		sessionFactoryBean.setDataSource(chatDetailDataSource);
+		sessionFactoryBean.setDataSource(jpaDataSource);
 		sessionFactoryBean.setPackagesToScan(packageScan);
 		sessionFactoryBean.setHibernateProperties(hibernateProperties());
 		return sessionFactoryBean;
