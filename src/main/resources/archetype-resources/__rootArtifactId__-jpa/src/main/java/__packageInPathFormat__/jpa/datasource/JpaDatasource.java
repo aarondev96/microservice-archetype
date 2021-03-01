@@ -50,7 +50,7 @@ class JpaDatasource {
 	@Value("${dollar}{hibernate.format_sql:true}")
 	private boolean formatSQL;
 
-	@Value("${dollar}{entities:com.aprades.test.jpa.entity}")
+	@Value("${dollar}{entities:${package}.jpa.entity}")
 	private String packageScan;
 
 	@Value("${dollar}{connection.release_mode:auto}")
