@@ -32,6 +32,4 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	private List<Variable> variableList;
 
-	// TODO: User¿?¿¿?¿ (see keycloak)
-
 }
