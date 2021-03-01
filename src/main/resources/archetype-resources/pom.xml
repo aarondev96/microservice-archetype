@@ -25,6 +25,7 @@
 		<license-maven-plugin.version>3.0</license-maven-plugin.version>
 		<spring.version>2.3.5.RELEASE</spring.version>
 		<lombok.version>1.18.16</lombok.version>
+		<swagger.version>3.0.0</swagger.version>
 		<junit.version>4.12</junit.version>
 	</properties>
 
@@ -58,6 +59,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
